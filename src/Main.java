@@ -8,6 +8,8 @@ public class Main {
     }
 
     public void run(){
+        Administration admin = new Administration();
+
         int keuze = 0;
 
         Scanner sc = new Scanner(System.in);
