@@ -49,4 +49,12 @@ public class Main {
         System.out.println("(-1) Exit program");
         System.out.println("--------------------------------------------------");
     }
+
+    public void toDoMgmt(){
+
+    }
+
+    public void settings(){
+
+    }
 }
