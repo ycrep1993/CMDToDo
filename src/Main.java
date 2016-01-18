@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,14 +20,33 @@ public class Main {
 
         while(keuze != -1){
             printMenu();
+
+            System.out.println("Enter a menu option: ");
+            try{
+                keuze = sc.nextInt();
+            }catch (InputMismatchException ime){
+                System.out.println("You should enter a valid integer as a menu option");
+            }
+
+            switch (keuze){
+                case 1: toDoMgmt();
+                    break;
+                case 2: settings();
+                    break;
+                case -1:
+                    System.out.println("Thanks for using Simple To Do, see you next time!");
+                    break;
+                default:
+                    System.out.println("This is not a valid option... please try again");
+            }
         }
     }
 
     public void printMenu(){
         System.out.println("--------------------------------------------------");
-        System.out.println("(1) Show all ToDo's");
-        System.out.println("(2) Add a new ToDo");
-        System.out.println("(3) Change ToDo File");
-
+        System.out.println("(1) Manage ToDo's");
+        System.out.println("(2) Configure Settings");
+        System.out.println("(-1) Exit program");
+        System.out.println("--------------------------------------------------");
     }
 }
