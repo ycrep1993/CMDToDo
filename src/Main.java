@@ -37,7 +37,7 @@ public class Main {
                     System.out.println("Thanks for using Simple To Do, see you next time!");
                     break;
                 default:
-                    System.out.println("This is not a valid option... please try again");
+                    System.out.println("This is not a valid option... please try again.");
             }
         }
     }
