@@ -129,16 +129,28 @@ public class Administration {
         return toDos;
     }
 
+    /**
+     * add new to do item to the arraylist
+     * @param description the description of the item
+     */
     public void addToDoToList(String description){
         toDos.add(new ToDo(description, new Date()));
         updateToDoFile();
     }
 
+    /**
+     * add a done to do item to the arraylist
+     * @param description the description of the item
+     * @param created the date it was created
+     */
     public void addToDoDoneToList(String description, Date created){
         toDos.add(new ToDoDone(description, created, new Date()));
         updateToDoFile();
     }
 
+    /**
+     * clear the to do file, and add all to do and done items to the file from the arraylist
+     */
     public void updateToDoFile(){
         try{
             FileWriter fw = new FileWriter(new File(toDoFileName));
@@ -162,6 +174,10 @@ public class Administration {
 
     }
 
+    /**
+     * remove an item from the arraylist and call updateToDoFile() so it will save
+     * @param removeAt index of the item in the arraylist
+     */
     public void removeToDoItem(int removeAt){
         try{
             toDos.remove(removeAt);
@@ -173,6 +189,10 @@ public class Administration {
 
     }
 
+    /**
+     * temporarily save data, delete the item, add a ToDoDone item with saved data
+     * @param index index of the item in the arraylist
+     */
     public void setDone(int index){
         Date created = convertStringToDate(toDos.get(index).getPlainDateString());
         String description = toDos.get(index).getDescription();

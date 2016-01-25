@@ -10,6 +10,9 @@ public class Main {
 
     Administration admin = new Administration();
 
+    /**
+     * Run the program
+     */
     public void run(){
 
         int keuze = 0;
@@ -46,6 +49,9 @@ public class Main {
         }
     }
 
+    /**
+     * print the main menu
+     */
     public void printMenu(){
         System.out.println("--------------------------------------------------");
         System.out.println("(1) ToDo's");
@@ -54,6 +60,9 @@ public class Main {
         System.out.println("--------------------------------------------------");
     }
 
+    /**
+     * the menu for managing to do items
+     */
     public void toDoMgmt(){
 
         int keuze = 0;
@@ -96,10 +105,16 @@ public class Main {
 
     }
 
+    /**
+     * the menu for managing settings
+     */
     public void settings(){
         //TODO implement method
     }
 
+    /**
+     * print all to do items with a counter
+     */
     public void printToDos(){
         ArrayList<ToDo> toDos = admin.getToDos();
         int counter = 0;
@@ -109,6 +124,9 @@ public class Main {
         }
     }
 
+    /**
+     * add a new to do item
+     */
     public void addToDo(){
         Scanner sc = new Scanner(System.in);
 
@@ -122,6 +140,9 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * mark a to do item as done
+     */
     public void markAsDone(){
         System.out.println("Enter the number of the item that should be marked as done");
 
@@ -139,6 +160,9 @@ public class Main {
         }
     }
 
+    /**
+     * delete a to do item
+     */
     public void delToDo(){
         System.out.println("Enter the number of the item that should be deleted");
 
