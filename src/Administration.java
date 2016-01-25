@@ -134,6 +134,11 @@ public class Administration {
         updateToDoFile();
     }
 
+    public void addToDoDoneToList(String description, Date created){
+        toDos.add(new ToDoDone(description, created, new Date()));
+        updateToDoFile();
+    }
+
     public void updateToDoFile(){
         try{
             FileWriter fw = new FileWriter(new File(toDoFileName));
@@ -141,8 +146,12 @@ public class Administration {
 
 
             for(ToDo toDo : toDos){
+                if(toDo instanceof ToDoDone){
+                    fw.append("ToDo;" + toDo.getDescription() + ";" + toDo.getPlainDateString() + ";" + ((ToDoDone) toDo).getDateCompletedString() + "\n");
+                }else{
+                    fw.append("ToDo;" + toDo.getDescription() + ";" + toDo.getPlainDateString() + "\n");
+                }
 
-                fw.append("ToDo;" + toDo.getDescription() + ";" + toDo.getPlainDateString() + "\n");
             }
 
             fw.close();
@@ -165,12 +174,14 @@ public class Administration {
     }
 
     public void setDone(int index){
-        ToDoDone tdd = new ToDoDone(toDos.get(index).getDescription(),
-                                    convertStringToDate(toDos.get(index).getPlainDateString()),
-                                    new Date());
+        Date created = convertStringToDate(toDos.get(index).getPlainDateString());
+        String description = toDos.get(index).getDescription();
 
         removeToDoItem(index);
 
+        addToDoDoneToList(description, created);
+
+        System.out.println("Marked as done");
 
     }
 

@@ -123,7 +123,20 @@ public class Main {
     }
 
     public void markAsDone(){
-        //TODO implement method
+        System.out.println("Enter the number of the item that should be marked as done");
+
+        Scanner sc = new Scanner(System.in);
+
+        int index;
+
+        try{
+            index = sc.nextInt();
+
+            admin.setDone(index);
+
+        }catch(InputMismatchException ime){
+            System.out.println(ime.toString());
+        }
     }
 
     public void delToDo(){
