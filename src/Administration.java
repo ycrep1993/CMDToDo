@@ -131,6 +131,37 @@ public class Administration {
 
     public void addToDoToList(String description){
         toDos.add(new ToDo(description, new Date()));
+        updateToDoFile();
+    }
+
+    public void updateToDoFile(){
+        try{
+            FileWriter fw = new FileWriter(new File(toDoFileName));
+            fw.write("");
+
+
+            for(ToDo toDo : toDos){
+
+                fw.append("ToDo;" + toDo.getDescription() + ";" + toDo.getPlainDateString() + "\n");
+            }
+
+            fw.close();
+
+        }catch (IOException ioe){
+            System.out.println("Can't read the file. Did you forget to close it somewhere?");
+        }
+
+    }
+
+    public void removeToDoItem(int removeAt){
+        try{
+            toDos.remove(removeAt);
+        }catch(IndexOutOfBoundsException ioobe){
+            System.out.println(ioobe.toString());
+        }
+
+        updateToDoFile();
+
     }
 
 }
