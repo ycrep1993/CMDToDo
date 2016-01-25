@@ -164,4 +164,14 @@ public class Administration {
 
     }
 
+    public void setDone(int index){
+        ToDoDone tdd = new ToDoDone(toDos.get(index).getDescription(),
+                                    convertStringToDate(toDos.get(index).getPlainDateString()),
+                                    new Date());
+
+        removeToDoItem(index);
+
+
+    }
+
 }
